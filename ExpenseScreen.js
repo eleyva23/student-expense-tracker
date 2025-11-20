@@ -19,7 +19,7 @@ export default function ExpenseScreen() {
   const [category, setCategory] = useState('');
   const [note, setNote] = useState('');
 
-    const loadExpenses = async () => {
+  const loadExpenses = async () => {
     const rows = await db.getAllAsync(
       'SELECT * FROM expenses ORDER BY id DESC;'
     );
@@ -60,7 +60,7 @@ export default function ExpenseScreen() {
   };
 
 
-    const renderExpense = ({ item }) => (
+  const renderExpense = ({ item }) => (
     <View style={styles.expenseRow}>
       <View style={{ flex: 1 }}>
         <Text style={styles.expenseAmount}>${Number(item.amount).toFixed(2)}</Text>
@@ -74,7 +74,7 @@ export default function ExpenseScreen() {
     </View>
   );
 
-    useEffect(() => {
+  useEffect(() => {
     async function setup() {
       await db.execAsync(`
         CREATE TABLE IF NOT EXISTS expenses (
@@ -91,7 +91,7 @@ export default function ExpenseScreen() {
     setup();
   }, []);
 
-    return (
+  return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.heading}>Student Expense Tracker</Text>
 
