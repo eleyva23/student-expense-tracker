@@ -1,11 +1,13 @@
 // App.js
+
 import React from 'react';
 import { SQLiteProvider } from 'expo-sqlite';
-import ExpenseScreen from './ExpenseScreen';
+import ExpensesScreen from './ExpensesScreen';
 
 export default function App() {
   return (
-    <SQLiteProvider databaseName="expenses_v2.db">
+    <SQLiteProvider
+      databaseName="expenses_v2.db"
       onInit={async (db) => {
         await db.execAsync(`
           CREATE TABLE IF NOT EXISTS expenses (
@@ -16,10 +18,8 @@ export default function App() {
           );
         `);
       }}
-    
-
-      <ExpenseScreen />
+    >
+      <ExpensesScreen />
     </SQLiteProvider>
   );
 }
-
