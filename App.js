@@ -6,7 +6,7 @@ import ExpensesScreen from './ExpensesScreen';
 
 export default function App() {
   return (
-    <SQLiteProvider
+    <SQLiteProvider 
       databaseName="expenses_v2.db"
       onInit={async (db) => {
         await db.execAsync(`
