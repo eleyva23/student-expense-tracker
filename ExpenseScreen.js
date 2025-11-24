@@ -156,6 +156,24 @@ const getTotalsByCategory = () => {
 
         <Button title="Add Expense" onPress={addExpense} />
       </View>
+      <View style={styles.summaryBox}>
+  <Text style={styles.summaryHeading}>
+    Total Spending ({filter === "all" ? "All" : filter === "week" ? "This Week" : "This Month"}):
+  </Text>
+
+  <Text style={styles.summaryValue}>
+    ${getTotalSpending().toFixed(2)}
+  </Text>
+
+  <Text style={styles.summaryHeading}>By Category:</Text>
+
+  {Object.entries(getTotalsByCategory()).map(([cat, total]) => (
+    <Text key={cat} style={styles.summaryCategory}>
+      • {cat}: ${total.toFixed(2)}
+    </Text>
+  ))}
+</View>
+
 
       <FlatList
         data={getFilteredExpenses()}
